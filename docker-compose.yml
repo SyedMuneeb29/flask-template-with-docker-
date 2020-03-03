@@ -2,8 +2,8 @@ version: "3"
 services:
   web:
     build: .
-    command: flask run --host=0.0.0.0 --port=5000
+    command: gunicorn --bind 0.0.0.0:8000 wsgi:app
     volumes:
       - .:/usr/src/app
     ports:
-      - "5000:5000"
+      - "8000:8000"
