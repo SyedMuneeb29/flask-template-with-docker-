@@ -1,5 +1,13 @@
 version: "3"
 services:
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    ports:
+      - "3306:3306"
   web:
     build: .
     command: gunicorn --bind 0.0.0.0:8000 wsgi:app
@@ -7,3 +15,5 @@ services:
       - .:/usr/src/app
     ports:
       - "8000:8000"
+    depends_on :
+      - db
