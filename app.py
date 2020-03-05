@@ -1,7 +1,7 @@
-# will be used to run locally via : // globally also if gunicorn not using 
+# will be used to run locally via : // globally also if gunicorn not using
 # flask run
 
 from apps_backend import app
 
 if __name__ == "__main__" :
-    app.run(host="0.0.0.0")
+    app.run(debug=True)
